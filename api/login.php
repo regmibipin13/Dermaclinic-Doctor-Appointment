@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response = array(
                 'status' => 'success',
                 'message' => 'Login successful',
-                'token' => $token
+                'token' => $token,
+                'user' => $row,
             );
         } else {
             $response = array(

@@ -108,7 +108,9 @@ if ($user_id) {
     if ($appointments) {
         // Appointments found
         // You can encode the appointments as JSON and send the response
-        $response = json_encode($appointments);
+        $response = json_encode([
+            'data' => $appointments
+        ]);
         header('Content-Type: application/json');
         echo $response;
     } else {

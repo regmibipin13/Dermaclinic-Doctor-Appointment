@@ -96,7 +96,7 @@ function getAppointments($user_id)
 }
 
 // Get the token from the request headers or query parameters
-$token = $_SERVER['HTTP_AUTHORIZATION'] ?? $_GET['token'] ?? '';
+$token = $_GET['token'] ?? '';
 
 // Verify the token and retrieve the user ID
 $user_id = verifyToken($token);

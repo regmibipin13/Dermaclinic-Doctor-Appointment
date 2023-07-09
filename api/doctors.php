@@ -4,7 +4,7 @@ include('../database/db.php');
 include('../global.php');
 
 // Prepare and execute the query to retrieve doctors' data
-$query = "SELECT doctors.id, doctors.category, doctors.patients, doctors.experience, doctors.bio_data, doctors.status,doctors.time, users.name, users.email
+$query = "SELECT doctors.id, doctors.category, doctors.patients, doctors.experience, doctors.bio_data, doctors.status,doctors.time,doctors.display_image, users.name, users.email
           FROM doctors
           INNER JOIN users ON doctors.user_id = users.id";
 
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
             'name' => $row['name'],
             'email' => $row['email'],
             'display_image' => $img_base . $row['display_image'],
-            'time' => $img_base . $row['time'],
+            'time' => $row['time'],
         );
         $doctors[] = $doctor;
     }

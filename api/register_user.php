@@ -2,6 +2,8 @@
 require_once('../database/db.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $type = isset($_POST['type']) ? $_POST['type'] : 'customer'; // Set default value if type is not provided
@@ -20,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Prepare the SQL statement to insert the user into the database
-        $insertSql = "INSERT INTO users (email, password, type) VALUES ('$email', '$hashedPassword', '$type')";
+        $insertSql = "INSERT INTO users (name, phone, email, password, type) VALUES ('$name','$phone','$email', '$hashedPassword', '$type')";
 
         if ($conn->query($insertSql) === TRUE) {
             $response = array(
